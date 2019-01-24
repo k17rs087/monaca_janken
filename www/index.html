@@ -17,8 +17,9 @@
       var hand_kyou=4;
       var hand_daikyou=5;
       // おみくじ表示用配列
-      var omikuzi_text = ["大吉", "吉", "中吉", "小吉", "凶", "大凶"];
-       var omikuzi2_text = ["今年は絶好調", "今年は運が良い年", "充実した年", "頑張った分だけ付いてくる年", "踏ん張り所な年", "周りに常に注意する年"];
+      var omikuzi_text = ["第一番", "第二番", "第三番", "第四番", "第五番", "第六番"];
+      var omikuzi2_text = ["大吉", "吉", "中吉", "小吉", "凶", "大凶"];
+       var omikuzi3_text = ["今年は絶好調", "今年は運が良い年", "充実した年", "頑張った分だけ付いてくる年", "踏ん張り所な年", "周りに常に注意する年"];
       // 勝敗判定用変数（定数）
       var judge_daikiti=0;
       var judge_kiti=1;
@@ -44,31 +45,31 @@
 
       // にふくら用おまじない
       var ncmb = new NCMB(appKey, clientKey);
-      var JankenScore = ncmb.DataStore("OmikuziScore");
+      var OmikuziScore = ncmb.DataStore("OmikuziScore");
       var key = "score";
 
       // ハイスコア
       var high_score = 0;
 
       function daikiti() {
-        janken(hand_daikiti);
+        Omikuzi(hand_daikiti);
       }
 
       function kiti() {
-        janken(hand_kiti);
+        Omikuzi(hand_kiti);
       }
 
       function tyu() {
-        janken(hand_tyu);
+        Omikuzi(hand_tyu);
       }
        function syou() {
-        janken(hand_syou);
+        Omikuzi(hand_syou);
       }
        function kyou() {
-        janken(hand_kyou);
+        Omikuzi(hand_kyou);
       }
        function daikyou() {
-        janken(hand_daikyou);
+        Omikuzi(hand_daikyou);
       }
 
       function omikuzi(){
@@ -77,7 +78,7 @@
         // 勝敗判定
         //result = judge[player_hand][comp_hand];
         // 結果表示
-        msg="運勢:" + omikuzi_text[comp_hand]+"<br>"+omikuzi2_text[comp_hand];
+        msg=omikuzi_text[comp_hand]+"<br>"+"運勢:" + omikuzi2_text[comp_hand]+"<br>"+omikuzi3_text[comp_hand];
         $("#result").html(msg);
         // 勝敗ごとの処理
         if(result == judge_win) {
